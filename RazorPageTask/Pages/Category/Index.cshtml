@@ -18,7 +18,6 @@
             <th>Name</th>
             <th>Description</th>
             <th>Active Status</th>
-            <th>Category</th>
         </tr>
     </thead>
     <tbody>
@@ -28,9 +27,6 @@
                 <td> @items.Name </td>
                 <td> @items.Description </td>
                 <td> @(items.IsActive != false?"Active":"InActive") </td>
-                <td>
-                    <a asp-page="/Category/Index" ></a>
-                </td>
             </tr>
         }
     </tbody>

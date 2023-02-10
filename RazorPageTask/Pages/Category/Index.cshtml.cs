@@ -17,18 +17,18 @@ namespace RazorPageTask.Pages.Category
         public IEnumerable<Model.Product> Products { get; set; }
         public void OnGet(string[]? catName, string? productName,int id)
         {
-            if(catName != null & catName.Length > 0)
+            if (catName != null & catName.Length > 0)
             {
                 Categories = _db.categories.Where(i => catName.Contains(i.Name)).ToList();
                 Products = _db.products;
             }
             else
             {
-                if(!string.IsNullOrEmpty(productName))
+                if (!string.IsNullOrEmpty(productName))
                 {
                     ViewData[productName] = productName;
-                    Categories = _db.products.Include(p=>p.Category).Where(p=>p.Name == productName)
-                        .Select(p=>p.Category).ToList();
+                    Categories = _db.products.Include(p => p.Category).Where(p => p.Name == productName)
+                        .Select(p => p.Category).ToList();
                     Products = _db.products.ToList();
                 }
                 else
@@ -38,8 +38,8 @@ namespace RazorPageTask.Pages.Category
                     ViewData["CategoryName"] = getData.Name;
                 }
             }
-            
         }
+
         public async Task<IActionResult> OnPost(string searchtxt)
         {
             var prodStr = searchtxt.Split(',');

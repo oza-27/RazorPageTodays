@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                @(item.IsActive != false?"Active":"InActive")
             </td>
             <td>
                     <a asp-route-id="@item.ProductId" asp-page="/Category/Index">@Html.DisplayFor(modelItem => item.Category.Name)</a>

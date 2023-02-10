@@ -1,0 +1,42 @@
+﻿@page
+@model RazorPageTask.Pages.Category.IndexModel
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Category List </h2>
+        </div>
+        <div class="col-6 text-end">
+            <input type="text" value="@ViewData["CategoryName"]" id="searchtxt" placeholder="Search" />
+            <button class="btn btn-outline-dark"> See list </button>
+        </div>
+    </div>
+</div>
+<table id="tableData" class="table table-bordered table-striped text-center" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Active Status</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var items in Model.Categories)
+        {
+            <tr>
+                <td> @items.Name </td>
+                <td> @items.Description </td>
+                <td> @(items.IsActive != false?"Active":"InActive") </td>
+                <td>
+                    <a asp-page="/Category/Index" ></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/category.js"></script>
+}

@@ -1,0 +1,53 @@
+﻿@page
+@model RazorPageTask.Pages.Products.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Create Product </h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.Name" class="control-label"></label>
+            <input asp-for="Product.Name" class="form-control" />
+            <span asp-validation-for="Product.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.Description" class="control-label"></label>
+            <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check mb-3">
+            <label class="form-check-label"> 
+                <input class="form-check-input" asp-for="Product.IsActive" /> @Html.DisplayNameFor(model => model.Product.IsActive)
+            </label>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.CategoryId" class="control-label"></label>
+            <select asp-for="Product.CategoryId" class ="form-control" asp-items="ViewBag.CategoryId">
+                <option selected disabled>----Select Category----</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+           <label asp-for="Product.Image" class="control-label"> Import File </label>
+           <input type="file" id="uploadImage" name="file" class="form-control" />
+        </div>
+        <input type="submit" onclick="return Validateinput()" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+    
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/product.js"></script>
+}

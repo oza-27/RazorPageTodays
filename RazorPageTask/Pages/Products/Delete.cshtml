@@ -1,0 +1,50 @@
+﻿@page
+@model RazorPageTask.Pages.Products.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Product.ProductId" />
+    <input asp-for="Product.Image" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Delete Product </h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.Name" class="control-label"></label>
+            <input asp-for="Product.Name" disabled class="form-control" />
+            <span asp-validation-for="Product.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.Description" class="control-label"></label>
+            <input asp-for="Product.Description" disabled class="form-control" />
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check mb-3">
+            <label class="form-check-label">
+                <input class="form-check-input" disabled asp-for="Product.IsActive" /> @Html.DisplayNameFor(model => model.Product.IsActive)
+            </label>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.CategoryId" class="control-label"></label>
+            <select asp-for="Product.CategoryId" disabled class="form-control" asp-items="ViewBag.CategoryId"></select>
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Product.Image" class="control-label"> Import Image </label>
+            <input type="file" id="uploadImage" disabled name="file" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <button class="btn btn-primary" style="width:150px;">
+                Delete
+            </button>
+            <a class="btn btn-danger" asp-page="./Index" style="width:150px;">
+                Back to List
+            </a>
+        </div>
+    </div>
+</form> 
